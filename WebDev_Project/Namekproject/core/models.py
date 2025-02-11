@@ -27,3 +27,12 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+class Service(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    icon = models.CharField(max_length=100)  # Store Bootstrap icon class
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

@@ -35,3 +35,25 @@ def subscribe(request):
             form.save()
             return redirect('home')  # Redirect after subscription
     return redirect('home')  # Redirect if accessed directly
+
+
+
+from rest_framework import viewsets
+from .models import Blog, Contact, Newsletter, Service
+from .serializers import BlogSerializer, ContactSerializer, NewsletterSerializer, ServiceSerializer
+
+class BlogViewSet(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
+class NewsletterViewSet(viewsets.ModelViewSet):
+    queryset = Newsletter.objects.all()
+    serializer_class = NewsletterSerializer
+
+class ServiceViewSet(viewsets.ModelViewSet):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
