@@ -2,9 +2,12 @@
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from .models import Blog
+from rest_framework import viewsets
+from .models import Blog, Contact, Newsletter, Service
 from .form import ContactForm, NewsletterForm
+from .serializers import BlogSerializer, ContactSerializer, NewsletterSerializer, ServiceSerializer
 
+# === TRADITIONAL DJANGO VIEWS === #
 def home(request):
     return render(request, 'core/home.html')
 
@@ -36,12 +39,7 @@ def subscribe(request):
             return redirect('home')  # Redirect after subscription
     return redirect('home')  # Redirect if accessed directly
 
-
-
-from rest_framework import viewsets
-from .models import Blog, Contact, Newsletter, Service
-from .serializers import BlogSerializer, ContactSerializer, NewsletterSerializer, ServiceSerializer
-
+# === DJANGO REST FRAMEWORK VIEWSETS === #
 class BlogViewSet(viewsets.ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
