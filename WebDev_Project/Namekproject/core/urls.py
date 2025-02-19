@@ -6,8 +6,8 @@ from .views import (
 )
 
 # API Router for DRF ViewSets
-router = DefaultRouter()
-router.register(r'blogs', BlogViewSet)
+router = DefaultRouter() #Creates a set of RESTful API routes automatically.
+router.register(r'blogs', BlogViewSet)  #This maps URLs like /api/blogs/ to the BlogViewSet.
 router.register(r'contacts', ContactViewSet)
 router.register(r'newsletters', NewsletterViewSet)
 router.register(r'services', ServiceViewSet)
@@ -22,5 +22,16 @@ urlpatterns = [
     path('subscribe/', subscribe, name='subscribe'),
 
     # API Endpoints
-    path('api/', include(router.urls)),
+    path('api/', include(router.urls)),  #Includes all the auto-generated API routes in Django’s urlpatterns.
 ]
+
+
+
+#When building APIs in Django REST Framework, ViewSets and Routers help manage
+#  API endpoints efficiently. Instead of writing separate views for each operation
+#  (like GET, POST, DELETE), ViewSets bundle these actions together. Routers automatically 
+# create URL patterns for them.
+
+#A ViewSet is a special type of Django view that handles CRUD operations 
+# (Create, Read, Update, Delete) for a model automatically. 
+# It reduces the need to write separate views for each action.

@@ -9,7 +9,7 @@ from .serializers import BlogSerializer, ContactSerializer, NewsletterSerializer
 
 # === TRADITIONAL DJANGO VIEWS === #
 def home(request):
-    return render(request, 'core/home.html')
+    return render(request, 'core/home.html')    #These views use Django’s built-in render() and redirect() functions to display HTML pages and handle form submissions.
 
 def about(request):
     return render(request, 'core/about.html')
@@ -40,9 +40,11 @@ def subscribe(request):
     return redirect('home')  # Redirect if accessed directly
 
 # === DJANGO REST FRAMEWORK VIEWSETS === #
-class BlogViewSet(viewsets.ModelViewSet):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
+ #A ModelViewSet automatically provides list, retrieve, create, update, and delete actions for the model.
+#This means you don’t need to write separate views for these actions.
+class BlogViewSet(viewsets.ModelViewSet):        
+    queryset = Blog.objects.all()  #Fetches all records from the Blog model.
+    serializer_class = BlogSerializer   #Specifies how the data should be formatted in the API response.
 
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
