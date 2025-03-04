@@ -1,0 +1,430 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0">
+    <title>Namek Solutions LTD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <style>
+
+         body { background: #F0F9FF; font-style: inter;}
+        .hero { text-align: center; padding: 30px 0; }
+        .services, .blog {  padding: 80px 0; }
+        .card { border-radius: 10px; }
+        .navbar-nav {
+            gap: 50px; /* Adds spacing of 60px between menu items */
+        }
+        .navbar-brand {
+            color: #0090D3 !important; 
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 40px;
+        }
+            
+        .btn-outline-primary {
+    color: #0090D3 !important;
+    border-color: #0090D3 !important;
+    width: 126; height: 46;
+        }
+
+        .btn-outline-primary:hover {
+    background-color: #0090D3 !important;
+    color: white !important;
+        }
+
+        .nav-link.Service-link {
+    color: #0090D3 !important;
+    font-weight: bold;
+}
+
+/* Service page properties in this page */
+.services-header {
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+        
+        .services-header h1 {
+            color: #0e3b5e;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .services-header p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .btn-primary {
+            background-color: #0099cc;
+            border-color: #0099cc;
+            padding: 10px 25px;
+            border-radius: 5px;
+            
+        }
+        
+        
+
+        .btn-outline-custom {
+            color: #0090D3;
+            background-color: transparent;
+            border: 1px solid #0090D3;
+            padding: 10px 25px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-custom:hover {
+            background-color: #0090D3;
+            color: white;
+        }
+        .section-title {
+            text-align: center;
+            margin: 50px 0;
+            color: #666;
+        }
+        
+        .service-item {
+            margin: 70px 0;
+        }
+        
+        .service-item h2 {
+            color: #0e3b5e;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .service-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .service-item .btn {
+            margin-top: 10px;
+        }
+        
+        .service-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+
+
+        /* FOOTER SECTION OF THE WEB PAGE */
+        .footer-section {
+            background-color: #E0F3FE;
+            padding: 40px 0 20px 0;
+        }
+        
+        .footer-logo {
+            max-width: 350px;
+            
+        }
+        
+        .footer-heading {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0099cc;
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .subscribe-form {
+            margin-top: 15px;
+        }
+        
+        .form-control {
+            border-radius: 20px;
+            padding: 12px 20px;
+        }
+        
+        .btn-subscribe {
+            border-radius: 20px;
+            padding: 10px 30px;
+            background-color: #0099cc;
+            color: white;
+            border: none;
+        }
+        
+        .footer-divider {
+            margin: 30px 0;
+            border-top: 1px solid #c5e1f0;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light py-3">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand text-primary fw-bold" href="#">
+                <img src="{% static 'core/images/namezlogo.png' %}" alt="Logo" class="me-2"> 
+                <span class="ms-2 fw-bold" style="font-size: 18px; color: #0090D3 !important;">Namek Solutions LTD</span>
+            </a>
+
+            <!-- Navbar Toggle (For Mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <!-- Centered Menu Items -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"> <a class="nav-link " href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="#" style="color: #0090D3 !important;">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Us Button Stays at the End -->
+            <a href="#" class="btn btn-outline-primary ">Contact Us</a>
+        </div>
+    </nav>
+
+    
+    
+
+    <div class="container">
+        <!-- Services Header -->
+        <section class="services-header">
+            <h1>Services</h1>
+            <p>At Namek Solutions Limited, we understand the transformative power of digital technologies and strive to harness this potential through our Digital Development Consulting Services.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="btn btn-outline-custom">Contact Us</a>
+            </div>
+        </section>
+        
+        <!-- What We Do Section -->
+        <section>
+            <h2 class="section-title">The things we do</h2>
+            
+            <!-- Digital Development Consulting -->
+            <div class="service-item row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>Digital Development<br>Consulting Service</h2>
+                    <p>Our team of experts specializes in tailoring digital strategies to enhance operational efficiencies, drive growth, and foster innovation across various sectors, including healthcare, education, and government. We offer comprehensive consulting services that encompass the entire digital lifecycle—from initial assessment and strategy formulation to implementation and ongoing support.</p>
+                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-image">
+                        <img src="{% static 'core/images/Digitalpicture.png' %}"  alt="Consulting Icon" alt="Digital Development Consulting" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Energy Solution -->
+            <div class="service-item row align-items-center flex-lg-row-reverse">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>Energy Solution</h2>
+                    <p>Our Energy Solutions encompass the sales and installation of high-quality solar panels and wind turbines, customized to optimize energy production for residential, commercial, and industrial settings. We conduct thorough site assessments, energy audits, and system design to ensure that each installation maximizes output and efficiency. Additionally, we provide maintenance services and support to guarantee the longevity and performance of every system we install.</p>
+                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-image">
+                        <img src="{% static 'core/images/Energysolutionimage.png' %}" alt="Energy Solutions" >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Innovative Gift Items -->
+            <div class="service-item row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>Innovative Gift Items</h2>
+                    <p>At Namek Solutions Limited, we pride ourselves on pushing the boundaries of innovation with our line of electronic gift items. Our products are designed to blend functionality with style, making them perfect for those looking to give something uniquely practical and technologically advanced. From sophisticated power banks for laptops that keep devices charged on the go, to sleek laptop car chargers ensuring connectivity and productivity during travel, our offerings cater to the needs of tech-savvy individuals.</p>
+                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-image">
+                        <img src="{% static 'core/images/innovativeGift.png' %}" alt="Innovative Gift Items" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+
+
+
+<!--FOOTER SECTION FOR THE WEB PAGE-->
+<footer class="footer-section">
+    <div class="container">
+        <div class="row">
+            <!-- Logo and Company Section -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <img src="{% static 'core/images/namezsolution.png' %}" alt="Namek Solutions LTD" class="footer-logo" width="225px" height="45"><br><br>
+            </div>
+        </div>
+                
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">   
+        <h5 class="footer-heading" >Company</h5>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#" >Services</a></li>
+                    <li><a href="#" >Blog</a></li>
+                    <li><a href="#" >Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Quick Links Section -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <h5 class="footer-heading">Quick Link</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Consulting Service</a></li>
+                    <li><a href="#">Energy Solution</a></li>
+                    <li><a href="#">Innovative Gift Items</a></li>
+                </ul>
+            </div>
+            
+            <!-- Connect with us Section -->
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h5 class="footer-heading">Connect with us</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Social Media</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            
+            <!-- Subscribe Section -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="footer-heading">Subscribe to Updates</h5>
+                <p>Stay informed about our latest updates</p>
+                
+                <div class="subscribe-form">
+                    <div class="row g-2">
+                        <div class="col-8">
+                            <input type="email" class="form-control" placeholder="Your Email Here">
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-subscribe w-100">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Divider -->
+        <hr class="footer-divider">
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div>
+                <p class="mb-0">© 2025 All Rights Reserved</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+     <!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>       
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>         
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+   <script>
+        // Custom script to make the carousel dots work
+        document.addEventListener('DOMContentLoaded', function() {
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = this.getAttribute('data-bs-slide-to');
+                    const carousel = bootstrap.Carousel.getInstance(document.getElementById('productsImageCarousel'));
+                    carousel.to(slideIndex);
+                    
+                    // Update active state
+                    dots.forEach(d => d.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Update dots when carousel slides
+            const carouselElement = document.getElementById('productsImageCarousel');
+            carouselElement.addEventListener('slid.bs.carousel', function(event) {
+                const slideIndex = event.to;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === slideIndex);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
