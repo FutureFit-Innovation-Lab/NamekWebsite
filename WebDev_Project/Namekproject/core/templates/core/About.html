@@ -37,91 +37,84 @@
     color: white !important;
         }
 
-        .nav-link.Service-link {
+        .nav-link.home-link {
     color: #0090D3 !important;
     font-weight: bold;
 }
 
-/* Service page properties in this page */
-.services-header {
+
+/* The about  page css styling */
+
+        .about-header {
             text-align: center;
             padding: 60px 0 30px;
         }
-        
-        .services-header h1 {
+
+        .about-header h1 {
             color: #0e3b5e;
             font-size: 42px;
             font-weight: bold;
             margin-bottom: 20px;
         }
-        
-        .services-header p {
-            max-width: 700px;
+
+        .about-description {
+            max-width: 800px;
             margin: 0 auto 30px;
+            text-align: center;
             color: #666;
             line-height: 1.6;
         }
-        
-        .btn-primary {
-            background-color: #0099cc;
-            border-color: #0099cc;
-            padding: 10px 25px;
-            border-radius: 5px;
-            
-        }
-        
-        
 
-        .btn-outline-custom {
-            color: #0090D3;
+        .btn-contact {
             background-color: transparent;
-            border: 1px solid #0090D3;
+            color: #0090D3;
+            border: 0.5px solid #0090D3;
             padding: 10px 25px;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
-        
-        .btn-outline-custom:hover {
+
+        .btn-contact:hover {
             background-color: #0090D3;
             color: white;
         }
-        .section-title {
-            text-align: center;
-            margin: 50px 0;
-            color: #666;
+
+        .about-images {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
         }
-        
-        .service-item {
-            margin: 70px 0;
-        }
-        
-        .service-item h2 {
-            color: #0e3b5e;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        .service-item p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .service-item .btn {
-            margin-top: 10px;
-        }
-        
-        .service-image {
-            border-radius: 8px;
+
+        .about-image {
+            flex: 1;
+            max-width: 250px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        
-        .service-image img {
+
+        .about-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-image img {
             width: 100%;
-            height: auto;
+            height: 250px;
             object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .about-images {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-image {
+                max-width: 90%;
+                margin-bottom: 15px;
+            }
         }
 
 
@@ -230,78 +223,48 @@
                 <!-- Centered Menu Items -->
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"> <a class="nav-link " href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="#" style="color: #0090D3 !important;">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link " href="{% url 'services' %}" >Services</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="#" style="color: #0090D3 !important;">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
 
             <!-- Contact Us Button Stays at the End -->
-            <a href="{% url 'contact' %}" class="btn btn-outline-primary ">Contact Us</a>
+            <a href="#" class="btn btn-outline-primary ">Contact Us</a>
         </div>
     </nav>
 
     
-    
-
     <div class="container">
-        <!-- Services Header -->
-        <section class="services-header">
-            <h1>Services</h1>
-            <p>At Namek Solutions Limited, we understand the transformative power of digital technologies and strive to harness this potential through our Digital Development Consulting Services.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-outline-custom">Contact Us</a>
+        <!-- About Header -->
+        <section class="about-header">
+            <h1>About Us</h1>
+            <div class="about-description">
+                <p>Based in Nigeria, we specialize in driving impactful digitalization across multiple sectors and delivering top-tier energy products, including solar and wind turbine installations. We provide custom-made products tailored to meet your specific needs, like laptop power banks, car laptop chargers, and others. Learn more about our services, projects, and how we can support your goals.</p>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-contact">Contact Us</a>
             </div>
         </section>
-        
-        <!-- What We Do Section -->
-        <section>
-            <h2 class="section-title">The things we do</h2>
-            
-            <!-- Digital Development Consulting -->
-            <div class="service-item row align-items-center" id="digital-development">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2>Digital Development<br>Consulting Service</h2>
-                    <p>Our team of experts specializes in tailoring digital strategies to enhance operational efficiencies, drive growth, and foster innovation across various sectors, including healthcare, education, and government. We offer comprehensive consulting services that encompass the entire digital lifecycle—from initial assessment and strategy formulation to implementation and ongoing support.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="service-image">
-                        <img src="{% static 'core/images/Digitalpicture.png' %}"  alt="Consulting Icon" alt="Digital Development Consulting" class="img-fluid">
-                    </div>
-                </div>
+    
+        <!-- About Images -->
+        <section class="about-images">
+            <div class="about-image" style="margin-bottom: 50px;">
+                <img src="{% static 'core/images/image1.png' %}" alt="Namek Solutions Team Working" >
+            </div> 
+            <div class="about-image" style="height: 193px !important; margin-top: 31px;">
+                <img src="{% static 'core/images/image11.png' %}" alt="Namek Solutions Team Working">
             </div>
-            
-            <!-- Energy Solution -->
-            <div class="service-item row align-items-center flex-lg-row-reverse" id="energy-solution">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2>Energy Solution</h2>
-                    <p>Our Energy Solutions encompass the sales and installation of high-quality solar panels and wind turbines, customized to optimize energy production for residential, commercial, and industrial settings. We conduct thorough site assessments, energy audits, and system design to ensure that each installation maximizes output and efficiency. Additionally, we provide maintenance services and support to guarantee the longevity and performance of every system we install.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="service-image">
-                        <img src="{% static 'core/images/Energysolutionimage.png' %}" alt="Energy Solutions" >
-                    </div>
-                </div>
+            <div class="about-image"  style="height: 254px !important;" >
+                <img src="{% static 'core/images/image111.png' %}" alt="Namek Solutions Team Working" style="height: 254px !important;">
             </div>
-            
-            <!-- Innovative Gift Items -->
-            <div class="service-item row align-items-center" id="innovative-gift-items">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2>Innovative Gift Items</h2>
-                    <p>At Namek Solutions Limited, we pride ourselves on pushing the boundaries of innovation with our line of electronic gift items. Our products are designed to blend functionality with style, making them perfect for those looking to give something uniquely practical and technologically advanced. From sophisticated power banks for laptops that keep devices charged on the go, to sleek laptop car chargers ensuring connectivity and productivity during travel, our offerings cater to the needs of tech-savvy individuals.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="service-image">
-                        <img src="{% static 'core/images/innovativeGift.png' %}" alt="Innovative Gift Items" class="img-fluid">
-                    </div>
-                </div>
+            <div class="about-image" style="height: 193px !important; margin-top: 31px;">
+                <img src="{% static 'core/images/image1111.png' %}" alt="Namek Solutions Team Working">
             </div>
         </section>
     </div>
-    
+     
+ 
 
 
 

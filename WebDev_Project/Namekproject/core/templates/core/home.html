@@ -281,13 +281,13 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"> <a class="nav-link active fw-bold" href="#" style="color: #0090D3 !important;">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'services' %}" >Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
 
             <!-- Contact Us Button Stays at the End -->
-            <a href="#" class="btn btn-outline-primary ">Contact Us</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-primary ">Contact Us</a>
         </div>
     </nav>
 
@@ -312,7 +312,7 @@
                      style="width: 50px; height: 50px; margin-bottom: 10px;">
                 <h5 class="fw-medium" style="font-size: 24px;">Digital Development <br>Consulting Service</h5>
                 <p class="text-muted">At Namek Solutions Limited, we understand the transformative power of digital technologies and strive to harness this potential through our Digital Development Consulting Services.</p>
-                <a href="#" class="btn btn-outline-primary"
+                <a href="{% url 'services' %}#digital-development" class="btn btn-outline-primary"
                    style="width: 107px; height: 43px; display: inline-flex; align-items: center; justify-content: center;">
                    Learn More
                 </a>
@@ -324,7 +324,7 @@
                      style="width: 50px; height: 50px; margin-bottom: 10px;">
                 <h5 class="fw-medium" style="font-size: 24px;">Energy Solution</h5>
                 <p class="text-muted">Our Energy Solutions encompass the sales and installation of high-quality solar panels and wind turbines, customized to optimize energy production for residential, commercial, and industrial settings.</p>
-                <a href="#" class="btn btn-outline-primary"
+                <a href="{% url 'services' %}#energy-solution" class="btn btn-outline-primary"
                    style="width: 107px; height: 43px; display: inline-flex; align-items: center; justify-content: center;">
                    Learn More
                 </a>
@@ -336,7 +336,7 @@
                      style="width: 50px; height: 50px; margin-bottom: 10px;">
                 <h5 class="fw-medium" style="font-size: 24px;">Innovative Gift Items</h5>
                 <p class="text-muted">We pride ourselves on pushing the boundaries of innovation with our line of electronic gift items.</p><br><br>
-                <a href="#" class="btn btn-outline-primary"
+                <a href="{% url 'services' %}#innovative-gift-items" class="btn btn-outline-primary"
                    style="width: 107px; height: 43px; display: inline-flex; align-items: center; justify-content: center;">
                    Learn More
                 </a>
