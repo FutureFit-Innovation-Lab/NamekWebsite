@@ -42,7 +42,111 @@
     font-weight: bold;
 }
 
+/* FIRST SECTION OF THE BLOG PAAGE */
+.project-section {
+            padding: 2rem 0;
+        }
+        
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-date {
+            color: #6c757d;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .project-banner {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .project-content {
+                font-size: 1rem;
+            }
+        }
 
+
+/* THE OTHER BLOG SECTION */ 
+
+        .blog-section {
+  padding: 3rem 0;
+}
+
+.blog-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+.blog-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.blog-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.blog-card .card-text {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.blog-read-more {
+  color: #0275d8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.blog-read-more:hover {
+  color: #014c8c;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .blog-section-title {
+    font-size: 1.5rem;
+  }
+  
+  .blog-card .card-title {
+    font-size: 1.1rem;
+  }
+}
 
 
 
@@ -157,15 +261,91 @@
             </div>
 
             <!-- Contact Us Button Stays at the End -->
-            <a href="#" class="btn btn-outline-primary ">Contact Us</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-primary ">Contact Us</a>
         </div>
     </nav>
 
+<!--FIRST SECTION OF THE BLOG PAGE -->
+    <div class="container project-section">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="project-title">Namek Launches Wind Project</h1>
+                
+                <p class="project-content">
+                    Namek Solutions is excited to announce the launch of a groundbreaking Wind energy project aimed at electrifying rural communities in Nigeria. This initiative, part of our ongoing commitment to sustainable development, will provide reliable, renewable energy to areas that lack access to the national grid.
+                </p>
+                
+                <p class="project-date">Jan 15, 2015</p>
+                
+                <img src="{% static 'core/images/image2.png' %}" alt="Wind turbines and solar panels" class="project-banner">
+            </div>
+        </div>
+    </div>
+    
+                            
+<!-- THE OTHER BLOG POST SECTION -->
+<div class="container blog-section">
+    <h2 class="blog-section-title mb-4">Other blog posts</h2>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Blog Post 1 -->
+        <div class="col">
+            <div class="card blog-card h-100">
+                <div class="d-flex justify-content-center" style="padding: 15px;">
+                    <img src="{% static 'core/images/image22.png' %}" class="card-img-top" alt="Partnership with FutureFit Innovation Lab" style="max-width: 100%; height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body text-start">
+                    <h5 class="card-title">Partnership Announcement - FutureFit Innovation Lab</h5>
+                    <p class="card-text">We are thrilled to announce a new partnership with FutureFit Innovation Lab, a leader in embedded systems...</p>
+                    <a href="#" class="blog-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Blog Post 2 -->
+        <div class="col">
+            <div class="card blog-card h-100">
+                <div class="d-flex justify-content-center" style="padding: 15px;">
+                    <img src="{% static 'core/images/image222.png' %}" class="card-img-top" alt="Digital health data blockchain" style="max-width: 100%; height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body text-start">
+                    <h5 class="card-title">Exchanging health data without a trusted authority</h5>
+                    <p class="card-text">Any one that has attended any digital health conference in the last decade would know that the topic around health information exchange is hot...</p>
+                    <a href="#" class="blog-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Blog Post 3 -->
+        <div class="col">
+            <div class="card blog-card h-100">
+                <div class="d-flex justify-content-center" style="padding: 15px;">
+                    <img src="{% static 'core/images/cloudcomputer.png' %}" class="card-img-top" alt="Cloud Computing Technology" style="max-width: 100%; height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body text-start">
+                    <h5 class="card-title">Cloud Computing Technology Trends</h5>
+                    <p class="card-text">Efficiency is everything in the world we live in today. We strive to be efficient in our human and material and time resources...</p>
+                    <a href="{% url 'services' %}#detail-blog" class="blog-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
 
-
-
+        <!-- Blog Post 4 -->
+        <div class="col">
+            <div class="card blog-card h-100">
+                <div class="d-flex justify-content-center" style="padding: 15px;">
+                    <img src="{% static 'core/images/Rectangle7.png' %}" class="card-img-top" alt="Cloud Computing Technology" style="max-width: 100%; height: 300px; object-fit: cover;">
+                </div>
+                <div class="card-body text-start">
+                    <h5 class="card-title">Why MPI and National IDs cannot work as Patient ID in LMICs</h5>
+                    <p class="card-text">After years of research into centralized Patient Identification, I have concluded that neither a national ID alone nor a central Master Patient Index (MPI) is suitable for developing countries...</p>
+                    <a href="#" class="blog-read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      
 
 
 

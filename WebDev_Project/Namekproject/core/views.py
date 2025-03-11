@@ -2,6 +2,7 @@
 
 # Create your views here.
 from django.shortcuts import render, redirect
+from django.http import Http404  # Import Http404
 from rest_framework import viewsets
 from .models import Blog, Contact, Newsletter, Service
 from .form import ContactForm, NewsletterForm
@@ -17,9 +18,19 @@ def about(request):
 def services(request):
     return render(request, 'core/services.html')
 
+# Blog List View (Shows all blogs)
 def blog_list(request):
-    blogs = Blog.objects.all().order_by('-created_at')
+    blogs = Blog.objects.all().order_by('-created_at')  # Fetch all blogs
     return render(request, 'core/blog.html', {'blogs': blogs})
+
+# Blog Detail View (Shows one blog using slug)
+def blog_detail(request, slug):
+    try:
+        blog = Blog.objects.get(slug=slug)  # Fetch blog by slug
+    except Blog.DoesNotExist:
+        raise Http404("Blog not found")  # Show error if blog doesn't exist
+    return render(request, 'core/blog_detail.html', {'blog': blog})
+
 
 def contact(request):
     if request.method == 'POST':

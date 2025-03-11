@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
     BlogViewSet, ContactViewSet, NewsletterViewSet, ServiceViewSet,
-    home, about, services, blog_list, contact, subscribe
+    home, about, services, blog_list, blog_detail, contact, subscribe
 )
 
 # API Router for DRF ViewSets
@@ -17,7 +17,11 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('services/', services, name='services'),
+
+    # blog url
     path('blog/', blog_list, name='blog'),  # Matches your template
+     path('blog/<slug:slug>/', blog_detail, name='blog_detail'),
+    
     path('contact/', contact, name='contact'),
     path('subscribe/', subscribe, name='subscribe'),
 
