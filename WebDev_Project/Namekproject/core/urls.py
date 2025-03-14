@@ -29,7 +29,10 @@ urlpatterns = [
     path('api/', include(router.urls)),  #Includes all the auto-generated API routes in Django’s urlpatterns.
 ]
 
+from django.conf import settings
+from django.conf.urls.static import static
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #When building APIs in Django REST Framework, ViewSets and Routers help manage
 #  API endpoints efficiently. Instead of writing separate views for each operation

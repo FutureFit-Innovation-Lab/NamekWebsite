@@ -1,353 +1,41 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0">
-    <title>Namek Solutions LTD</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    <style>
+{% extends 'core/base.html' %}
 
-         body { background: #F0F9FF; font-style: inter;}
-        .hero { text-align: center; padding: 30px 0; }
-        .services, .blog {  padding: 80px 0; }
-        .card { border-radius: 10px; }
-        .navbar-nav {
-            gap: 50px; /* Adds spacing of 60px between menu items */
-        }
-        .navbar-brand {
-            color: #0090D3 !important; 
-        }
-
-        .navbar-brand img {
-            width: 50px;
-            height: 40px;
-        }
-            
-        .btn-outline-primary {
-    color: #0090D3 !important;
-    border-color: #0090D3 !important;
-    width: 126; height: 46;
-        }
-
-        .btn-outline-primary:hover {
-    background-color: #0090D3 !important;
-    color: white !important;
-        }
-
-        .nav-link.home-link {
-    color: #0090D3 !important;
-    font-weight: bold;
-}
-
-/* BLOG DETAIL CSS */
-     
-
-.blog-header {
-            margin-bottom: 1.5rem;
-        }
-        .blog-date {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        .blog-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-        .blog-intro {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        .check-item {
-            color: #28a745;
-            font-weight: 500;
-        }
-        .section-title {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #495057;
-            font-weight: 600;
-        }
-        .cloud-provider {
-            margin-bottom: 0.5rem;
-        }
-        .future-section {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-
-
-/* FOOTER SECTION OF THE WEB PAGE */
-.footer-section {
-            background-color: #E0F3FE;
-            padding: 40px 0 20px 0;
-        }
-        
-        .footer-logo {
-            max-width: 350px;
-            
-        }
-        
-        .footer-heading {
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding-left: 0;
-            font-size: 14px;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: #0099cc;
-        }
-        
-        .social-icons {
-            margin-top: 15px;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            margin-right: 10px;
-            transition: all 0.3s;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-        
-        .subscribe-form {
-            margin-top: 15px;
-        }
-        
-        .form-control {
-            border-radius: 20px;
-            padding: 12px 20px;
-        }
-        
-        .btn-subscribe {
-            border-radius: 20px;
-            padding: 10px 30px;
-            background-color: #0099cc;
-            color: white;
-            border: none;
-        }
-        
-        .footer-divider {
-            margin: 30px 0;
-            border-top: 1px solid #c5e1f0;
-        }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light py-3">
-        <div class="container">
-            <!-- Logo -->
-            <a class="navbar-brand text-primary fw-bold" href="#">
-                <img src="{% static 'core/images/namezlogo.png' %}" alt="Logo" class="me-2"> 
-                <span class="ms-2 fw-bold" style="font-size: 18px; color: #0090D3 !important;">Namek Solutions LTD</span>
-            </a>
-
-            <!-- Navbar Toggle (For Mobile) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <!-- Centered Menu Items -->
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"> <a class="nav-link " href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link " href="{% url 'services' %}" >Services</a></li>
-                    <li class="nav-item"><a class="nav-link " href="{% url 'about' %}" >About Us</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="#" style="color: #0090D3 !important;">Blog</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Us Button Stays at the End -->
-            <a href="{% url 'contact' %}" class="btn btn-outline-primary ">Contact Us</a>
-        </div>
-    </nav>
-
-<!--THE BLOG DETAIL PAGE-->
+{% block content %}
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-10 mx-auto">
-            <!-- Blog Title -->
-            <h1 class="blog-header">Cloud Computing Technology Trends</h1>
-            
-            <!-- Blog Meta -->
-            <p class="blog-date">Jan 19, 2015</p>
-            
-            <!-- Blog Intro -->
-            <p class="blog-intro">Efficiency is everything in the world we live in today. We strive to be efficient in our human and material and time resources. In this post, I will share emerging technologies and businesses as far as the cloud is concerned.</p>
+    <div class="row justify-content-center">
+        <div class="col-md-8 blog-content">
+            <h1 class="blog-header">{{ blog.title }}</h1>
+            <p class="blog-date">{{ blog.created_at|date:"F d, Y" }}</p>
+            <p class="blog-intro">{{ blog.excerpt }}</p>
             
             <!-- Featured Image -->
-            <img src="https://placehold.co/1200x600/0dcaf0/white?text=Cloud+Computing" alt="Cloud Computing Illustration" class="blog-image">
-            
+            {% if blog.thumbnail %}
+            <div class="text-center">
+                <img src="{{ blog.thumbnail.url }}" alt="{{ blog.title }}" class="blog-image img-fluid rounded">
+            </div>
+        {% endif %}
+
             <!-- Main Content -->
-            <p>The answer is simple yet significant. Whether you're in a developed or developing country, managing a business-driven IT system comes with several challenges. Traditionally, setting up and maintaining an on-premises infrastructure requires hiring multiple specialized personnel, including:</p>
+            <p>{{ blog.content|linebreaks }}</p>
             
-            <ul>
-                <li>A Network Administrator to ensure smooth connectivity and prevent downtime.</li>
-                <li>A Database Administrator to manage and optimize database performance.</li>
-                <li>An Operating Systems Administrator to maintain and update system software.</li>
-                <li>A Security Expert to protect sensitive data from cyber threats and vulnerabilities.</li>
-            </ul>
-            
-            <p>Beyond personnel costs, businesses also have to contend with hardware maintenance, power failures, and scalability limitations. These challenges make it difficult and expensive for many businesses, especially startups and SMEs, to operate efficiently.</p>
-            
-            <h2 class="section-title">The Cloud Revolution: Accessibility and Cost-Effectiveness</h2>
-            <p>The emergence of cloud computing has transformed the way businesses operate, allowing organizations of all sizes to host high-quality services with minimal upfront investment. Instead of purchasing and maintaining expensive infrastructure, businesses can now co-locate their applications on highly scalable and reliable cloud platforms.</p>
-            
-            <h3 class="mt-4 mb-3">With cloud services, businesses can:</h3>
-            
-            <p class="check-item">✅ Reduce costs: No need to buy or maintain physical servers.</p>
-            <p class="check-item">✅ Scale easily: Adjust resources based on demand without downtime.</p>
-            <p class="check-item">✅ Improve security: Benefit from enterprise-grade security measures offered by cloud providers.</p>
-            <p class="check-item">✅ Enhance flexibility: Access applications and data from anywhere in the world.</p>
-            
-            <h2 class="section-title">Rising Demand for Cloud Experts and SaaS Opportunities</h2>
-            <p>This shift to the cloud has drastically increased the demand for cloud engineers, DevOps specialists, and cybersecurity experts who can manage and optimize cloud-based infrastructure. Additionally, there is huge potential in building Software as a Service (SaaS) solutions—applications hosted in the cloud and delivered to users on a subscription basis.</p>
-            
-            <h2 class="section-title">Key Players in the Cloud Industry</h2>
-            <p>The world's leading cloud service providers include:</p>
-            
-            <p class="cloud-provider"><strong>Google Cloud</strong> – Known for AI-driven solutions and seamless integration with Google services.</p>
-            <p class="cloud-provider"><strong>Amazon Web Services (AWS)</strong> – The largest cloud provider, offering a vast range of scalable computing solutions.</p>
-            <p class="cloud-provider"><strong>Microsoft Azure</strong> – A major enterprise cloud platform with strong integrations into Microsoft products.</p>
-            
-            <h2 class="section-title future-section">The Future: Mobile-Driven Cloud Services</h2>
-            <p>As technology evolves, mobile platforms are becoming the primary means of accessing cloud services. Businesses are focusing on mobile-first strategies, enabling users to access, manage, and interact with cloud applications seamlessly from smartphones and tablets. Cloud computing is not just the present—it is the future. Companies that embrace it early will benefit from efficiency, security, and scalability, while those that resist may struggle to keep up in the digital economy.</p>
+            <!-- Back to Blogs Button -->
+            <a href="{% url 'blog' %}" class="btn btn-primary mt-3">← Back to Blogs</a>
         </div>
     </div>
 </div>
+{% endblock %}
 
+<style>
+    .blog-content {
+        max-width: 800px;  /* Ensures content is not too wide */
+        margin: auto;  /* Centers everything */
+        text-align: justify;  /* Makes text readable */
+    }
 
-
-
-
-
-    <!--FOOTER SECTION FOR THE WEB PAGE-->
-<footer class="footer-section">
-    <div class="container">
-        <div class="row">
-            <!-- Logo and Company Section -->
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <img src="{% static 'core/images/namezsolution.png' %}" alt="Namek Solutions LTD" class="footer-logo" width="225px" height="45"><br><br>
-            </div>
-        </div>
-                
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">   
-        <h5 class="footer-heading" >Company</h5>
-                <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#" >Services</a></li>
-                    <li><a href="#" >Blog</a></li>
-                    <li><a href="#" >Contact Us</a></li>
-                </ul>
-            </div>
-            
-            <!-- Quick Links Section -->
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                <h5 class="footer-heading">Quick Link</h5>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Consulting Service</a></li>
-                    <li><a href="#">Energy Solution</a></li>
-                    <li><a href="#">Innovative Gift Items</a></li>
-                </ul>
-            </div>
-            
-            <!-- Connect with us Section -->
-            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-                <h5 class="footer-heading">Connect with us</h5>
-                <ul class="footer-links">
-                    <li><a href="#">Social Media</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Webinars</a></li>
-                </ul>
-            </div>
-            
-            <!-- Subscribe Section -->
-            <div class="col-lg-4 col-md-6">
-                <h5 class="footer-heading">Subscribe to Updates</h5>
-                <p>Stay informed about our latest updates</p>
-                
-                <div class="subscribe-form">
-                    <div class="row g-2">
-                        <div class="col-8">
-                            <input type="email" class="form-control" placeholder="Your Email Here">
-                        </div>
-                        <div class="col-4">
-                            <button class="btn btn-subscribe w-100">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Divider -->
-        <hr class="footer-divider">
-        
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <div>
-                <p class="mb-0">© 2025 All Rights Reserved</p>
-            </div>
-            <div class="social-icons">
-                <a href="#" class="social-icon">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="#" class="social-icon">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="#" class="social-icon">
-                    <i class="bi bi-twitter-x"></i>
-                </a>
-                <a href="#" class="social-icon">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-     <!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">        
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>       
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>         
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+    .blog-image {
+        max-width: 100%;  /* Ensures image is responsive */
+        height: auto;
+        margin: 20px auto; /* Adds equal space around image */
+        display: block; /* Ensures image is properly centered */
+    }
+</style>

@@ -42,7 +42,79 @@
     font-weight: bold;
 }
 
+/* THE CONTACT PAGE CSS */
 
+.contact-form {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-control {
+            background-color: #C2D6E2;
+            border: none;
+            padding: 15px;
+        }
+        .send-button {
+            background-color: #0090D3;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-weight: 500;
+        }
+        .contact-info {
+            margin-top: 40px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .icon-container {
+            width: 40px;
+            height: 40px;
+            background-color: #0092d4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        .icon-container img {
+            width: 20px;
+            height: 20px;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #0092d4;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+        }
+        h1 {
+            color: #0e3452;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .intro-text {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        textarea.form-control {
+            min-height: 300px;
+        }
 
 
 
@@ -161,10 +233,83 @@
         </div>
     </nav>
 
+ <!--THE CONTACT PAGE-->
 
-
-
-
+ <div class="container contact-form">
+    <h1>Contact Us</h1>
+    <p class="intro-text">
+        Have a question, feedback, or need assistance? We're here to help! Reach out to us using the details below, and we'll get back to you as soon as possible.
+    </p>
+    
+    <form>
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName">
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName">
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        
+        <div class="mb-4">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" rows="8"></textarea>
+        </div>
+        
+        <button type="submit" class="btn send-button">Send Message</button>
+    </form>
+    
+    <div class="contact-info">
+        <div class="contact-item">
+            <div class="icon-container">
+                <img src="{% static 'core/images/icon1.png' %}" alt="Phone" style="height: 40px; width: 40px;">
+            </div>
+            <div>
+                <p class="mb-0 text-muted">Phone Number</p>
+                <p class="mb-0 fw-medium">+234(0)9159807418</p>
+            </div>
+        </div>
+        
+        <div class="contact-item">
+            <div class="icon-container">
+                <img src="{% static 'core/images/icon2.png' %}" alt="Email" style="height: 40px; width: 40px;">
+            </div>
+            <div>
+                <p class="mb-0 text-muted">Email</p>
+                <p class="mb-0 fw-medium">info@nameksolutions.com</p>
+            </div>
+        </div>
+        
+        <div class="contact-item">
+            <div class="icon-container">
+                <img src="{% static 'core/images/icon3.png' %}" alt="Location" style="height: 40px; width: 40px;">
+            </div>
+            <div>
+                <p class="mb-0 text-muted">Address</p>
+                <p class="mb-0 fw-medium">No 35 Justice Sowemimo Street, Asokoro</p>
+            </div>
+        </div>
+        
+        <div>
+            <p class="fw-bold">Follow Us</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <img src="{% static 'core/images/icon5.png' %}" alt="LinkedIn" style="height: 40px; width: 40px;">
+                </a>
+                <a href="#" class="social-icon">
+                    <img src="{% static 'core/images/icon4.png' %}" alt="Facebook" style="height: 40px; width: 40px;"> 
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
