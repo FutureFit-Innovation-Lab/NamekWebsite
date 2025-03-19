@@ -495,23 +495,26 @@
                 </ul>
             </div>
             
-            <!-- Subscribe Section -->
-            <div class="col-lg-4 col-md-6">
-                <h5 class="footer-heading">Subscribe to Updates</h5>
-                <p>Stay informed about our latest updates</p>
-                
-                <div class="subscribe-form">
-                    <div class="row g-2">
-                        <div class="col-8">
-                            <input type="email" class="form-control" placeholder="Your Email Here">
-                        </div>
-                        <div class="col-4">
-                            <button class="btn btn-subscribe w-100">Subscribe</button>
-                        </div>
-                    </div>
+<!-- Subscribe Section -->
+<div class="col-lg-4 col-md-6">
+    <h5 class="footer-heading">Subscribe to Updates</h5>
+    <p>Stay informed about our latest updates</p>
+    <!-- Add a form with POST method -->
+    <form method="POST" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+        <div class="subscribe-form">
+            <div class="row g-2">
+                <div class="col-8">
+                    <!-- Add name attribute to input -->
+                    <input type="email" class="form-control" name="email" placeholder="Your Email Here" required>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-subscribe w-100">Subscribe</button>
                 </div>
             </div>
         </div>
+    </form>
+</div>
         
         <!-- Divider -->
         <hr class="footer-divider">

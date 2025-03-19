@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from .models import Blog, Contact, Newsletter, Service
 from .form import ContactForm, NewsletterForm
 from .serializers import BlogSerializer, ContactSerializer, NewsletterSerializer, ServiceSerializer
+from django.contrib import messages
 
 # === TRADITIONAL DJANGO VIEWS === #
 def home(request):
@@ -43,12 +44,16 @@ def contact(request):
     return render(request, 'core/contact.html', {'form': form})
 
 def subscribe(request):
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Redirect after subscription
-    return redirect('home')  # Redirect if accessed directly
+    if request.method == "POST":
+        email = request.POST.get("email")
+        
+        if Newsletter.objects.filter(email=email).exists():
+            messages.warning(request, "You are already subscribed!")
+        else:
+            Newsletter.objects.create(email=email)
+            messages.success(request, "Subscription successful!")
+
+    return redirect("home")  # Redirect to home page after subscribing
 
 # === DJANGO REST FRAMEWORK VIEWSETS === #
  #A ModelViewSet automatically provides list, retrieve, create, update, and delete actions for the model.

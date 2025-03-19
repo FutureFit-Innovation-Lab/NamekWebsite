@@ -240,31 +240,35 @@
     <p class="intro-text">
         Have a question, feedback, or need assistance? We're here to help! Reach out to us using the details below, and we'll get back to you as soon as possible.
     </p>
-    
-    <form>
+
+    <!--THE FORM SECTION IN THE CONTACT PAGE-->
+    <form method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        
         <div class="row mb-4">
             <div class="col-md-6 mb-3 mb-md-0">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" name="first_name" required>
             </div>
             <div class="col-md-6">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName">
+                <input type="text" class="form-control" id="lastName" name="last_name" required>
             </div>
         </div>
         
         <div class="mb-4">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
         
         <div class="mb-4">
             <label for="message" class="form-label">Your Message</label>
-            <textarea class="form-control" id="message" rows="8"></textarea>
+            <textarea class="form-control" id="message" name="message" rows="8" required></textarea>
         </div>
         
         <button type="submit" class="btn send-button">Send Message</button>
     </form>
+
     
     <div class="contact-info">
         <div class="contact-item">
@@ -357,23 +361,26 @@
                 </ul>
             </div>
             
-            <!-- Subscribe Section -->
-            <div class="col-lg-4 col-md-6">
-                <h5 class="footer-heading">Subscribe to Updates</h5>
-                <p>Stay informed about our latest updates</p>
-                
-                <div class="subscribe-form">
-                    <div class="row g-2">
-                        <div class="col-8">
-                            <input type="email" class="form-control" placeholder="Your Email Here">
-                        </div>
-                        <div class="col-4">
-                            <button class="btn btn-subscribe w-100">Subscribe</button>
-                        </div>
-                    </div>
+<!-- Subscribe Section -->
+<div class="col-lg-4 col-md-6">
+    <h5 class="footer-heading">Subscribe to Updates</h5>
+    <p>Stay informed about our latest updates</p>
+    <!-- Add a form with POST method -->
+    <form method="POST" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+        <div class="subscribe-form">
+            <div class="row g-2">
+                <div class="col-8">
+                    <!-- Add name attribute to input -->
+                    <input type="email" class="form-control" name="email" placeholder="Your Email Here" required>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-subscribe w-100">Subscribe</button>
                 </div>
             </div>
         </div>
+    </form>
+</div>
         
         <!-- Divider -->
         <hr class="footer-divider">
