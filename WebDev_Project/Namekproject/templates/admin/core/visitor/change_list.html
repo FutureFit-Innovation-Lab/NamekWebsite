@@ -1,0 +1,14 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+    <h2>Monthly Visitor Statistics</h2>
+    <ul>
+        {% for visit in monthly_visits %}
+            <li>Month: {{ visit.month }} — Visits: {{ visit.count }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Month with Highest Visits: {{ peak_month }}</h3>
+
+    {{ block.super }}
+{% endblock %}

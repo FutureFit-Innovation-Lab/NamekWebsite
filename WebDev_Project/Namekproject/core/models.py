@@ -4,6 +4,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from datetime import datetime
 
 # BLOG MODEL
 class Blog(models.Model):
@@ -64,3 +65,20 @@ class Service(models.Model):
         return self.title
     
     
+    # VISITOR MODEL to track visitor information.
+class Visitor(models.Model):
+    ip_address = models.GenericIPAddressField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.ip_address
+
+    @classmethod
+    def monthly_visits(cls):
+        return cls.objects.extra(select={'month': "strftime('%%m', timestamp)"}).values('month').annotate(count=models.Count('id')).order_by('month')
+
+    @classmethod
+    def month_with_highest_visits(cls):    #Finds the month with the highest visits.
+
+        result = cls.monthly_visits().order_by('-count').first()
+        return result['month'] if result else 'No visits yet'
