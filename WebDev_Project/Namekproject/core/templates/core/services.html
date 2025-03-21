@@ -250,7 +250,7 @@
             <h1>Services</h1>
             <p>At Namek Solutions Limited, we understand the transformative power of digital technologies and strive to harness this potential through our Digital Development Consulting Services.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-custom">Contact Us</a>
             </div>
         </section>
         
@@ -263,7 +263,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2>Digital Development<br>Consulting Service</h2>
                     <p>Our team of experts specializes in tailoring digital strategies to enhance operational efficiencies, drive growth, and foster innovation across various sectors, including healthcare, education, and government. We offer comprehensive consulting services that encompass the entire digital lifecycle—from initial assessment and strategy formulation to implementation and ongoing support.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-custom">Contact Us</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-image">
@@ -277,7 +277,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2>Energy Solution</h2>
                     <p>Our Energy Solutions encompass the sales and installation of high-quality solar panels and wind turbines, customized to optimize energy production for residential, commercial, and industrial settings. We conduct thorough site assessments, energy audits, and system design to ensure that each installation maximizes output and efficiency. Additionally, we provide maintenance services and support to guarantee the longevity and performance of every system we install.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-custom">Contact Us</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-image">
@@ -291,7 +291,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2>Innovative Gift Items</h2>
                     <p>At Namek Solutions Limited, we pride ourselves on pushing the boundaries of innovation with our line of electronic gift items. Our products are designed to blend functionality with style, making them perfect for those looking to give something uniquely practical and technologically advanced. From sophisticated power banks for laptops that keep devices charged on the go, to sleek laptop car chargers ensuring connectivity and productivity during travel, our offerings cater to the needs of tech-savvy individuals.</p>
-                    <a href="#" class="btn btn-outline-custom">Contact Us</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-custom">Contact Us</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-image">
@@ -320,10 +320,10 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">   
         <h5 class="footer-heading" >Company</h5>
                 <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#" >Services</a></li>
-                    <li><a href="#" >Blog</a></li>
-                    <li><a href="#" >Contact Us</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}" >Services</a></li>
+                    <li><a href="{% url 'blog' %}" >Blog</a></li>
+                    <li><a href="{% url 'contact' %}" >Contact Us</a></li>
                 </ul>
             </div>
             
@@ -331,7 +331,7 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                 <h5 class="footer-heading">Quick Link</h5>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="#">Consulting Service</a></li>
                     <li><a href="#">Energy Solution</a></li>
                     <li><a href="#">Innovative Gift Items</a></li>
