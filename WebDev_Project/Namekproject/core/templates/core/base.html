@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,32 +6,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Namek Solutions{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         body { background: #F0F9FF; font-style: inter;}
+        .navbar-nav {
+            gap: 50px; /* Adds spacing of 50px between menu items */
+        }
+        .navbar-brand {
+            color: #0090D3 !important;
+        }
+        .navbar-brand img {
+            width: 50px;
+            height: 40px;
+        }
+        .btn-outline-primary {
+    color: #0090D3 !important;
+    border-color: #0090D3 !important;
+    width: 126px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; 
+    box-sizing: border-box; 
+    }
+
+        
+        .btn-outline-primary:hover {
+            background-color: #0090D3 !important;
+            color: white !important;
+        }
+    
+        /* FOOTER SECTION OF THE WEB PAGE */
+.footer-section {
+            background-color: #E0F3FE;
+            padding: 40px 0 20px 0;
+        }
+        
+        .footer-logo {
+            max-width: 350px;
+            
+        }
+        
+        .footer-heading {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0099cc;
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .subscribe-form {
+            margin-top: 15px;
+        }
+        
+        .form-control {
+            border-radius: 20px;
+            padding: 12px 20px;
+        }
+        
+        .btn-subscribe {
+            border-radius: 20px;
+            padding: 10px 30px;
+            background-color: #0099cc;
+            color: white;
+            border: none;
+        }
+        
+        .footer-divider {
+            margin: 30px 0;
+            border-top: 1px solid #c5e1f0;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    </style>
 </head>
 <body>
 
-<!-- Display Django Messages -->
-{% if messages %}
-{% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-        {{ message }}
-    </div>
-{% endfor %}
-{% endif %}
-
-{% block content %}{% endblock %}  <!-- Page content -->
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light py-3">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Namek Solutions</a>
+            <!-- Logo -->
+            <a class="navbar-brand text-primary fw-bold" href="{% url 'home' %}">
+                <img src="{% static 'core/images/namezlogo.png' %}" alt="Logo" class="me-2"> 
+                <span class="ms-2" style="font-size: 18px; color: #0090D3 !important;">Namek Solutions LTD</span>
+            </a>
+    
+            <!-- Navbar Toggle (For Mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'blog_detail' %}active{% endif %}" href="{% url 'blog' %}" style="font-weight: bold; color:#0090D3 !important; ;">Blog</a>
+                    </li>
+                </ul>
+            </div>
+    
+            <!-- Contact Us Button -->
+            <a href="{% url 'contact' %}" class="btn btn-outline-primary">Contact Us</a>
         </div>
     </nav>
+    
 
-    <div class="container mt-4">
-        
-    </div>
+    <!-- Display Django Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-    <footer class="footer mt-5 py-3 bg-light text-center">
-        <p>&copy; 2025 Namek Solutions LTD</p>
+    <!-- Page Content Block -->
+    {% block content %}{% endblock %} <br><br>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- Logo and Company Section -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <img src="{% static 'core/images/namezsolution.png' %}" alt="Namek Solutions LTD" class="footer-logo" width="225px" height="45"><br><br>
+                </div>
+            </div>
+                    
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">   
+            <h5 class="footer-heading" >Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#" >Services</a></li>
+                        <li><a href="#" >Blog</a></li>
+                        <li><a href="#" >Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Links Section -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-heading">Quick Link</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Consulting Service</a></li>
+                        <li><a href="#">Energy Solution</a></li>
+                        <li><a href="#">Innovative Gift Items</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Connect with us Section -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-heading">Connect with us</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Social Media</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Webinars</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Subscribe Section -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-heading">Subscribe to Updates</h5>
+                    <p>Stay informed about our latest updates</p>
+                    
+                    <div class="subscribe-form">
+                        <div class="row g-2">
+                            <div class="col-8">
+                                <input type="email" class="form-control" placeholder="Your Email Here">
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-subscribe w-100">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <hr class="footer-divider">
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>
+                    <p class="mb-0">© 2025 All Rights Reserved</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

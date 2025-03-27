@@ -14,7 +14,8 @@ router.register(r'services', ServiceViewSet)
 
 urlpatterns = [
     # Traditional Views
-    path('', home, name='home'),
+    path('', home, name='home'),  # Home Page
+    path('blog/', blog_list, name='blog_list'),
     path('about/', about, name='about'),
     path('services/', services, name='services'),
 

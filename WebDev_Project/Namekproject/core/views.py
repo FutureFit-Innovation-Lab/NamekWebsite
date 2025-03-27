@@ -11,7 +11,8 @@ from django.contrib import messages
 
 # === TRADITIONAL DJANGO VIEWS === #
 def home(request):
-    return render(request, 'core/home.html')    #These views use Django’s built-in render() and redirect() functions to display HTML pages and handle form submissions.
+    blogs = Blog.objects.all().order_by('-created_at')[:3]
+    return render(request, 'core/home.html', {'blogs': blogs})    #These views use Django’s built-in render() and redirect() functions to display HTML pages and handle form submissions.
 
 def about(request):
     return render(request, 'core/about.html')

@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
     <style>
-
+        
          body { background: #F0F9FF; font-style: inter;}
         .hero { text-align: center; padding: 30px 0; }
         .services, .blog {  padding: 80px 0; }
@@ -411,43 +411,29 @@
 <section class="blog-section">
     <div class="container">
         <h2 class="section-title">Blog Post</h2>
-        
-        <div class="row">
-            <!-- Blog Card 1 -->
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <img src="{% static 'core/images/Rectangle7.png' %}" class="blog-image" alt="MPI and National IDs Diagram">
-                    <div class="blog-content">
-                        <h3 class="blog-title">Why MPI and National IDs cannot work as Patient ID in LMICs</h3>
-                        <p class="blog-text">After years of research into centralized Patient Identification, I have concluded that neither a national ID alone nor a central Master Patient Index (MPI) is suitable for developing countries...</p>
-                        <a href="#" class="read-more">Read More</a>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for blog in blogs %}
+            <div class="col">
+                <div class="card blog-card h-100">
+                    <div class="d-flex justify-content-center" style="padding: 15px;">
+                        {% if blog.thumbnail %}
+                            <img src="{{ blog.thumbnail.url }}" class="card-img-top" alt="{{ blog.title }}" style="max-width: 100%; height: 300px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'core/images/default-image.png' %}" class="card-img-top" alt="No Image Available" style="max-width: 100%; height: 300px; object-fit: cover;">
+                        {% endif %}
+                    </div>
+                    <div class="card-body text-start">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.excerpt }}</p>
+                        <a href="{% url 'blog_detail' slug=blog.slug %}" class="blog-read-more">Read More</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Blog Card 2 -->
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <img src="{% static 'core/images/Rectangle8.png' %}" class="blog-image" alt="Blockchain Health Data">
-                    <div class="blog-content">
-                        <h3 class="blog-title">Exchanging health data without a trusted authority</h3>
-                        <p class="blog-text">Any one that has attended any digital health conference in the last decade would know that the topic around health information exchange is hot...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Card 3 -->
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <img src="{% static 'core/images/Rectangle9.png' %}" class="blog-image" alt="Cloud Computing">
-                    <div class="blog-content">
-                        <h3 class="blog-title">Cloud Computing Technology Trends</h3>
-                        <p class="blog-text">Efficiency is everything in the world we live in today. We strive to be efficient in our human and material and time resources...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'blog_list' %}" class="btn btn-primary" style="background-color: #0090D3; color: white;outline-color:#0090D3;">View All Blogs</a>
         </div>
     </div>
 </section>
